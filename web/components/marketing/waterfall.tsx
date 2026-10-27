@@ -30,13 +30,13 @@ const NODES: Node[] = [
     endpoint: "POST /kyb/cases/{id}/footprint",
   },
   {
-    tag: "Feature 4",
+    tag: "Feature 3",
     title: "Web Intelligence",
     body: "When the registry can’t confirm the entity, an agent scrapes the open web — location, team, funding, news — and an LLM judges the presence. It never decides.",
     endpoint: "POST /kyb/cases/{id}/enrich",
   },
   {
-    tag: "Feature 3",
+    tag: "Feature 4",
     title: "Risk & Review",
     body: "A weighted scorecard merges identity + footprint into a risk rating with reason codes, hard-stops, a review queue, and analyst actions — all audited.",
     endpoint: "GET /kyb/cases",
