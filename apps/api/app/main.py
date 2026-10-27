@@ -19,10 +19,11 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title=settings.app_name, lifespan=lifespan)
 
-# Allow a local frontend (Next.js etc.) to call the API during development.
+# Allowed browser origins come from CORS_ORIGINS (comma-separated). Defaults to
+# localhost for dev; set it to your deployed frontend URL in production.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=settings.cors_origin_list,
     allow_methods=["*"],
     allow_headers=["*"],
 )

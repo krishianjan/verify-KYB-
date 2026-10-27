@@ -1,0 +1,47 @@
+# Render Blueprint for the verifyKYB backend (free tier).
+# Deploy: Render dashboard -> New -> Blueprint -> pick this repo.
+# Secrets are marked `sync: false` so Render prompts for them in the dashboard
+# and NEVER stores them in this repo.
+services:
+  - type: web
+    name: verifykyb-api
+    runtime: python
+    plan: free
+    rootDir: apps/api
+    buildCommand: pip install -r ../../requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+
+      # --- Safe, free, zero-credit public-demo defaults ---
+      # Mock registry = instant, deterministic, no Apify spend from recruiters.
+      # Flip REGISTRY_PROVIDER to "us_sos" (and set APIFY_API_TOKEN) for live lookups.
+      - key: REGISTRY_PROVIDER
+        value: mock
+      - key: ENABLE_VECTOR
+        value: "false"
+      - key: ENABLE_PLAYWRIGHT
+        value: "false"
+      - key: CRAWLER_PROVIDER
+        value: static
+      - key: ENABLE_ENRICHMENT
+        value: "true"
+      - key: SEARCH_PROVIDER
+        value: ddg
+      - key: SUMMARIZER_PROVIDER
+        value: openrouter
+
+      # --- Set these in the Render dashboard (kept private, not in the repo) ---
+      - key: CORS_ORIGINS        # e.g. https://verify-kyb.vercel.app
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL
+        sync: false
+      - key: CRAWL4AI_API_KEY
+        sync: false
+      - key: URLSCAN_API_KEY
+        sync: false
+      - key: APIFY_API_TOKEN     # only needed if REGISTRY_PROVIDER=us_sos
+        sync: false

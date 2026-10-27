@@ -14,6 +14,14 @@ class Settings(BaseSettings):
     app_name: str = "verifyKYB API"
     environment: str = "dev"
 
+    # Comma-separated list of allowed browser origins for CORS. In production set
+    # this to your deployed frontend URL, e.g. "https://verify-kyb.vercel.app".
+    cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000"
+
+    @property
+    def cors_origin_list(self) -> list[str]:
+        return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
+
     # Database. SQLite by default so the app runs with zero setup.
     # For Postgres: postgresql+psycopg://user:pass@host:5432/verifykyb
     database_url: str = "sqlite:///./verifykyb.db"
