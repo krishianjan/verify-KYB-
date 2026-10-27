@@ -1,10 +1,8 @@
 # verifyKYB  Project Notes (full history & reference)
 
-_Last updated: 2026-10-26. Backend complete (Features 1–4 + ML + report) with a
-Streamlit demo. Feature 4 (web-intelligence agent) + registry-resilience fix
-landed this session. Next session: production frontend._
 
----
+
+
 
 ## 1. Goal & problem
 
