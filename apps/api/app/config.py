@@ -66,11 +66,15 @@ class Settings(BaseSettings):
     # Runs when the registry is unavailable/not-found or on-demand. Scrapes the
     # open web, has the LLM parse evidence + judge web presence (never decides).
     enable_enrichment: bool = True
-    # Web search provider for enrichment: ddg (free) | crawl4ai | apify
+    # Web search provider(s) for enrichment. Comma-separated PRIORITY LIST —
+    # each is tried until one returns results; free DDG is always the final
+    # fallback. e.g. "firecrawl,crawl4ai,ddg" | "crawl4ai" | "ddg" | "apify".
     search_provider: str = "ddg"
     apify_serp_actor: str = "apify/google-search-scraper"
     crawl4ai_api_key: str | None = None
     crawl4ai_base_url: str = "https://api.crawl4ai.com"
+    firecrawl_api_key: str | None = None
+    firecrawl_base_url: str = "https://api.firecrawl.dev"
     enrichment_max_queries: int = 6          # targeted SERP queries per company
     enrichment_max_pages: int = 5            # pages scraped + fed to the LLM
     enrichment_char_cap: int = 12000         # evidence bundle size cap (chars)

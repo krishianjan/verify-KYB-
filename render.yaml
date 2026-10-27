@@ -28,7 +28,7 @@ services:
       - key: ENABLE_ENRICHMENT
         value: "true"
       - key: SEARCH_PROVIDER
-        value: ddg
+        value: firecrawl,crawl4ai,ddg
       - key: SUMMARIZER_PROVIDER
         value: openrouter
 
@@ -40,6 +40,8 @@ services:
       - key: OPENROUTER_MODEL
         sync: false
       - key: CRAWL4AI_API_KEY
+        sync: false
+      - key: FIRECRAWL_API_KEY
         sync: false
       - key: URLSCAN_API_KEY
         sync: false

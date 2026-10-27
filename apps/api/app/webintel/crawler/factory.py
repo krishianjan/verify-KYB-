@@ -29,14 +29,22 @@ def get_crawler() -> WebCrawler:
         from .crawl4ai_cloud import Crawl4aiCloudCrawler
 
         return Crawl4aiCloudCrawler()
+    if provider == "firecrawl":
+        from .firecrawl import FirecrawlCrawler
+
+        return FirecrawlCrawler()
     if provider == "tiered":
-        # static (free) -> Crawl4AI cloud (markdown, no local browser) ->
-        # local Crawl4AI/Playwright for JS sites -> Apify backstop.
+        # static (free) -> Firecrawl/Crawl4AI cloud (markdown, no local browser)
+        # -> local Crawl4AI/Playwright for JS sites -> Apify backstop.
         from .tiered import TieredCrawler
 
         chain: list[WebCrawler] = [StaticCrawler(timeout=settings.crawl_timeout_seconds)]
         import importlib.util
 
+        if settings.firecrawl_api_key:
+            from .firecrawl import FirecrawlCrawler
+
+            chain.append(FirecrawlCrawler())
         if settings.crawl4ai_api_key:
             from .crawl4ai_cloud import Crawl4aiCloudCrawler
 

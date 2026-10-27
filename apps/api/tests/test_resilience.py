@@ -90,11 +90,16 @@ def test_llm_json_parser_handles_fences_and_junk():
 
 def test_search_factory_falls_back_to_ddg(monkeypatch):
     from app.webintel.search import factory
+    from app.webintel.search.chain import ChainSearch
     from app.webintel.search.ddg import DdgSearch
 
+    # A named provider with no key is dropped; DDG is always the final fallback.
     monkeypatch.setattr(factory.settings, "search_provider", "crawl4ai")
     monkeypatch.setattr(factory.settings, "crawl4ai_api_key", None)
-    assert isinstance(factory.get_search_provider(), DdgSearch)
+    monkeypatch.setattr(factory.settings, "firecrawl_api_key", None)
+    provider = factory.get_search_provider()
+    assert isinstance(provider, ChainSearch)
+    assert any(isinstance(p, DdgSearch) for p in provider._providers)
 
 
 # ---- end-to-end: an outage yields PENDING, not F0/reject -------------------
