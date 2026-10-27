@@ -1,113 +1,481 @@
-# verify KYB with Agents
+# verifyKYB
 
-Open-source KYB (Know Your Business) platform. **Feature 1: Business registry +
-corporate identity verification.**
+Open-source KYB (Know Your Business) verification platform for fintech, merchant onboarding, compliance, AML, business due diligence, and company risk assessment.
 
-Submit a business → the identity pipeline resolves it against an official
-registry, pulls directors + UBOs (PSC), compares submitted vs registry data,
-and returns an explainable confidence score with a decision
-(`auto_approve` / `manual_review` / `reject`).
+verifyKYB is a real-world KYB project for identifying and verifying businesses, merchants, and companies before onboarding them into financial products, payment systems, banking workflows, and risk review pipelines. It combines company verification, digital footprint analysis, risk scoring, and AI-assisted review to help teams automate KYB checks with explainable decision-making.
 
-## Status
-- [x] Feature 1 — registry + identity verification (US live via Apify SoS)
-- [x] Feature 2 — digital footprint analysis (crawl + domain intel + ghost signals)
-- [x] Feature 3 — combined risk engine + review queue + analyst actions + vector/memory
-- [x] ML risk layer — IsolationForest anomaly detection + supervised (analyst-label) scaffold
-- [x] Streamlit analyst dashboard (`dashboard/`) — onboard, case detail, review queue
+This repository is designed for developers, fintech teams, compliance professionals, risk analysts, and builders who want an open-source foundation for KYB software, merchant onboarding workflows, business verification systems, and AI-powered compliance automation.
 
-## Feature 3 — combined risk + analyst workflow
-Bank/AML-style weighted risk scorecard (Identity 45% / Footprint 35% /
-Ownership 20%) with hard-stop overrides and reason codes. Merges F1 + F2.
-- `POST /kyb/cases/{id}/risk` — (re)compute the combined `RiskScore`.
-- `GET /kyb/cases?status=&rating=&decision=&limit=` — analyst review queue.
-- `POST /kyb/cases/{id}/actions` — `approve|reject|request_docs|escalate` (+notes).
-- `GET /kyb/cases/{id}/memory` — prior findings (vector memory).
-- Vector DB (Chroma, local MiniLM embeddings) powers `CLONED_SITE_MATCH`
-  detection (shell-network red flag) and case memory.
+---
 
-## Feature 2 — digital footprint (ghost-business detection)
-`POST /kyb/cases/{id}/footprint` crawls the business website, runs domain
-intelligence (WHOIS age, DNS/MX, TLS), computes deterministic ghost-business
-signals + a 0–100 legitimacy score and a verdict (`real`/`thin`/`inconsistent`/
-`ghost`), and writes an LLM (or template) explanation. `GET` returns the latest.
+## Why this project matters
 
-Config (`.env`):
-- `CRAWLER_PROVIDER`: `mock` | `static` (free) | `apify` | `tiered` (static→apify fallback)
-- `SUMMARIZER_PROVIDER`: `template` (no key) | `openrouter` (+`OPENROUTER_API_KEY`)
+KYB (Know Your Business) is one of the most important compliance workflows in fintech, payments, banking, and merchant onboarding. Companies need to verify that the businesses they onboard are legitimate, operational, and low risk.
 
-Design: evidence + signals are deterministic/auditable; the LLM only narrates.
+Traditional KYB processes are often:
+- manual
+- inconsistent
+- slow
+- fragmented across tools
+- difficult to scale
+- hard to explain to auditors and analysts
+
+verifyKYB solves this by combining:
+- registry-based verification
+- digital footprint checks
+- reputation and domain intelligence
+- risk scoring
+- report generation
+- analyst review workflows
+- AI-assisted explainability
+
+This makes it useful for:
+- fintech startups
+- payment platforms
+- banking partners
+- merchant onboarding teams
+- compliance operations
+- AML and KYC workflows
+- vendor due diligence
+- business verification tools
+- risk screening systems
+
+---
+
+## What is KYB?
+
+KYB stands for Know Your Business. It is the process of verifying the identity, legitimacy, ownership, and risk of a business before accepting it as a customer, merchant, vendor, or partner.
+
+Common KYB use cases include:
+- merchant onboarding
+- fintech business verification
+- payment partner screening
+- supplier due diligence
+- vendor risk assessment
+- AML and sanctions screening support
+- compliance review
+- business identity validation
+- company risk scoring
+
+---
+
+## Search-friendly repo positioning
+
+This project is positioned around common search terms and user intent such as:
+
+- KYB
+- Know Your Business
+- KYB verification
+- KYB project
+- open-source KYB
+- KYB platform
+- KYB automation
+- fintech compliance
+- merchant onboarding
+- company verification
+- business due diligence
+- AML workflow
+- KYC and KYB
+- business risk assessment
+- startup KYB platform
+- open-source compliance tools
+- compliance automation
+- merchant verification
+- risk scoring software
+- AI KYB agents
+- AI compliance agents
+- KYB agent workflow
+- business onboarding automation
+- financial compliance tools
+- fintech onboarding
+- company screening
+- merchant risk
+- business verification software
+
+This repository is designed to be discoverable by people searching for:
+- best KYB projects
+- open-source KYB projects
+- KYB agents
+- KYB tools for fintech
+- fintech compliance open source
+- company verification software
+- merchant onboarding projects
+- AI KYB automation
+- KYB dashboard
+- KYB verification platform
+
+---
+
+## Project goals
+
+verifyKYB aims to provide a practical open-source workflow for:
+
+1. verifying company identity
+2. checking legal existence and registration
+3. gathering company and merchant data
+4. crawling and evaluating digital footprint
+5. scoring risk and compliance signals
+6. generating explainable KYB reports
+7. routing uncertain cases for analyst review
+8. creating reusable foundations for AI-driven compliance systems
+
+---
+
+## Core features
+
+### 1. Company and merchant verification
+- identify business entities
+- verify legal registration
+- resolve company names and addresses
+- assess match quality
+- detect mismatches and inconsistencies
+
+### 2. Registry-based checks
+- official business registry lookups
+- legal status verification
+- company metadata extraction
+- officers and directors review
+- beneficial ownership signals where available
+
+### 3. Digital footprint analysis
+- domain and website verification
+- WHOIS / RDAP checks
+- DNS and TLS insights
+- social presence detection
+- website legitimacy analysis
+- ghost business signal detection
+- business profile synthesis
+
+### 4. Risk scoring
+- weighted risk model
+- explainable reason codes
+- review triggers
+- deterministic scoring
+- risk grade generation
+- confidence-based decisions
+
+### 5. Analyst workflow
+- review queue
+- escalation paths
+- manual decision support
+- audit trail
+- approval / reject / request documents workflows
+
+### 6. AI-powered explanation layer
+- structured explanations for human readers
+- narrative summaries
+- AI-generated reasoning
+- evidence-backed explainability
+- assistive analysis for analysts
+
+### 7. Report generation
+- KYB report output
+- business summary
+- transparency on sources
+- risk findings
+- match quality and evidence summary
+
+### 8. AI agent architecture
+This project is designed to be expanded into agentic workflows for:
+- background data collection
+- company enrichment
+- web intelligence gathering
+- structured evidence extraction
+- explanation and summarization
+- automated next-step recommendations
+
+---
+
+## Why this repo is useful for AI and automation
+
+This project is intended to support:
+- AI agents for compliance workflows
+- rule-based verification pipelines
+- autonomous research agents
+- structured evidence extraction
+- AI-assisted risk reviews
+- LLM explanations with deterministic decision control
+
+Important design principle:
+- AI explains and supports the review
+- the final decision remains auditable and rule-based
+- the workflow is not dependent on opaque black-box decisions
+
+This is important for real-world compliance and finance environments where traceability matters.
+
+---
+
+## Typical architecture
+
+The system is structured around a pipeline:
+
+1. Receive business submission
+2. Validate submitted company or merchant information
+3. Run registry and identity checks
+4. Gather digital footprint data
+5. Review domain, web presence, and business signals
+6. Compute risk using deterministic scoring
+7. Generate explainable result and report
+8. Route uncertain cases to analyst review
+
+```text
+Submission
+   ↓
+Identity verification
+   ↓
+Digital footprint analysis
+   ↓
+Risk scoring engine
+   ↓
+Report generation
+   ↓
+Manual review / approval / reject
+```
+
+---
+
+## Tech stack
+
+| Layer | Technology |
+|------|------------|
+| API | FastAPI |
+| Validation | Pydantic |
+| Database | SQLAlchemy + SQLite / Postgres |
+| Matching | rapidfuzz |
+| Web scraping | httpx, BeautifulSoup, Playwright |
+| Domain intelligence | python-whois, RDAP, dnspython |
+| Reputation checks | urlscan.io |
+| AI / LLM support | OpenRouter |
+| Vector memory | ChromaDB |
+| Machine learning | scikit-learn |
+| Dashboard | Streamlit |
+| Async / background tasks | extendable for future rollout |
+
+---
+
+## Main project goals
+
+verifyKYB is meant to be:
+- open source
+- practical
+- production-minded
+- explainable
+- modular
+- extendable
+- relevant to real fintech and compliance workflows
+- useful for learning and building real business verification systems
+
+---
+
+## Example KYB workflow
+
+A typical verification flow looks like this:
+
+1. Business submits company or merchant details
+2. System checks the legal existence of the business
+3. Data is matched against registry information
+4. Company name, address, and ownership are compared
+5. Domain and website are reviewed
+6. Reputation and footprint signals are computed
+7. Risk score is generated
+8. A KYB report is produced
+9. If there are uncertain signals, the case is routed for analyst review
+
+---
+
+## Repository vision
+
+This repository is intended as a strong open-source foundation for:
+
+- KYB verification platforms
+- merchant onboarding software
+- business identity systems
+- financial compliance tooling
+- AI-assisted due diligence
+- fintech startup projects
+- risk scoring dashboards
+- startup compliance automation
+- real-world KYB agent workflows
+
+---
+
+## Why this repo can stand out
+
+This project is valuable because it sits at the intersection of:
+- fintech
+- compliance
+- automation
+- AI
+- merchant onboarding
+- corporate verification
+- risk scoring
+- open-source engineering
+
+That makes it attractive for:
+- open-source contributors
+- fintech builders
+- product teams
+- startups
+- compliance engineers
+- risk analysts
+- developers exploring business verification systems
+
+---
+
+## Quick start
+
 ```bash
-curl -s -X POST http://127.0.0.1:8000/kyb/cases/<id>/footprint | python -m json.tool
+git clone https://github.com/krishianjan/verify-KYB-.git
+cd verify-KYB-
 ```
 
-## Architecture
-```
-apps/api/app/
-  main.py            FastAPI app
-  config.py          settings (env-driven)
-  db.py              SQLAlchemy engine/session/Base
-  models.py          ORM: business, director, beneficial_owner, registry_record,
-                     identity_assessment, mismatch, risk_signal, audit_event
-  schemas.py         Pydantic request/response contracts
-  registry/          registry adapters (FROZEN interface)
-    dto.py           normalized DTOs  [FROZEN]
-    base.py          RegistryAdapter ABC  [FROZEN]
-    mock.py          offline adapter (no API key)
-    factory.py       provider selection
-    companies_house.py   <- OUTSOURCED (drop-in)
-  matching/
-    normalize.py     name/address normalization  [OUTSOURCE target, frozen sigs]
-    engine.py        deterministic confidence + decision engine  [CORE]
-  pipelines.py       identity pipeline orchestration  [CORE]
-  cases.py           case service
-  routes.py          HTTP API
+Then install dependencies and run the application according to the local environment configuration.
+
+```bash
+pip install -r requirements.txt
 ```
 
-The pipeline depends only on `registry/base.py` — adding a jurisdiction means
-adding one adapter, nothing else changes.
+Run the API:
 
-## Run (zero setup — uses mock registry + SQLite)
 ```bash
 cd apps/api
-pip install -r ../../requirements.txt
 uvicorn app.main:app --reload
 ```
-Open http://127.0.0.1:8000/docs
 
-### Try it
+Visit:
+- Swagger docs: http://127.0.0.1:8000/docs
+
+Run the dashboard:
+
 ```bash
-# Clean match -> auto_approve
-curl -s -X POST http://127.0.0.1:8000/kyb/cases \
-  -H 'content-type: application/json' \
-  -d '{"legal_name":"ACME TRADING LTD","company_number":"01234567"}' | python -m json.tool
-
-# Dissolved company -> reject
-curl -s -X POST http://127.0.0.1:8000/kyb/cases \
-  -H 'content-type: application/json' \
-  -d '{"legal_name":"GHOST HOLDINGS LTD","company_number":"09999999"}' | python -m json.tool
+cd dashboard
+streamlit run streamlit_app.py
 ```
 
-## Switch to real US data (Secretary of State, all 50 states + DC)
-Live and working via the Apify `clearpath/us-business-entity-search` actor.
-1. Put `APIFY_API_TOKEN=...` in `.env`.
-2. Set `REGISTRY_PROVIDER=us_sos`.
-3. Restart. Submit a case with a `state` to keep it to one registry (cheap):
-```bash
-curl -s -X POST http://127.0.0.1:8000/kyb/cases \
-  -H 'content-type: application/json' \
-  -d '{"legal_name":"38 TESLA, LLC","state":"CA"}' | python -m json.tool
+---
+
+## Project structure
+
+```text
+verifyKYB/
+├── apps/
+│   └── api/
+│       ├── app/
+│       ├── tests/
+│       └── scripts/
+├── dashboard/
+├── docs/
+├── README.md
+├── requirements.txt
+├── FRONTEND_TASK.md
+├── OUTSOURCE_TASKS.md
+├── .env.example
+└── ...
 ```
 
-### Cost / usage notes
-- One actor run per lookup. Always pass `state` → searches 1 registry, not 51.
-- Results are capped per state (`APIFY_MAX_RESULTS_PER_STATE`, default 5).
-- Keep `REGISTRY_PROVIDER=mock` during development to avoid actor-run costs.
-- **US UBO gap:** US registries publish no beneficial-owner data. The adapter
-  sets `supports_psc = False`; officers are used as a proxy and the case carries
-  a `NO_VERIFIED_UBO` info signal (not a penalty). Officer coverage itself
-  varies by state — some states publish officers/managers, some don't.
+---
 
-## Switch to real UK data (later)
-1. Get a free API key: https://developer.company-information.service.gov.uk/
-2. In `.env`: set `REGISTRY_PROVIDER=companies_house` and `COMPANIES_HOUSE_API_KEY=...`
-3. Restart. (Requires the `companies_house.py` adapter — see OUTSOURCE_TASKS.md.)
+## Use cases
+
+### Fintech
+- verify merchants before onboarding
+- evaluate compliance risk before releasing accounts
+- review payment and business customers
+
+### Banking
+- support business onboarding workflows
+- reduce manual verification burden
+- assess operational legitimacy
+
+### Risk and compliance teams
+- monitor business risk
+- review suspicious onboarding cases
+- create explainable intervention workflows
+
+### Startups
+- build KYB features without starting from zero
+- prototype merchant onboarding systems
+- create a compliance workflow foundation
+
+---
+
+## AI and compliance alignment
+
+This repository is designed to respect real-world compliance needs:
+
+- deterministic decisions where possible
+- explainable output
+- reason codes and evidence
+- analyst review for unresolved cases
+- AI assistance without replacing auditable decision logic
+
+This is essential for serious financial and compliance products.
+
+---
+
+## Roadmap
+
+Planned improvements include:
+
+- stronger registry integration
+- more jurisdictions and country adapters
+- better entity matching
+- sanctions and watchlist checks
+- improved risk scoring
+- enhanced analyst review flow
+- AI-powered evidence summarization
+- real-time monitoring and periodic re-checks
+- production dashboard and frontend
+- API-first architecture for easier integration
+
+---
+
+## Contribution
+
+Contributions are welcome.
+
+You can help by:
+- improving registry matching
+- enhancing risk scoring
+- improving data collection and scraping
+- improving report quality
+- adding better onboarding flows
+- building analytics and dashboards
+- adding tests
+- documenting architecture
+- expanding use cases
+
+---
+
+## FAQ
+
+### What is KYB?
+KYB stands for Know Your Business. It is the process of verifying the identity and legitimacy of a business before onboarding it.
+
+### Why is KYB important?
+KYB helps reduce fraud, financial crime, onboarding risk, and bad business relationships.
+
+### Is this project only for fintech?
+No. It is useful for any business that needs to assess the legitimacy and risk of a company, merchant, partner, or vendor.
+
+### Is this AI-powered?
+It can be enhanced with AI-assisted explanations, summaries, and evidence extraction, but the decision logic remains auditable and rule-based.
+
+### Is this open source?
+Yes. The repository is designed as an open-source KYB project and starter framework.
+
+---
+
+## Keywords
+
+KYB, Know Your Business, KYB verification, open-source KYB, merchant onboarding, fintech compliance, AML, company verification, business verification, merchant verification, due diligence, risk scoring, risk assessment, AI KYB, KYB agents, compliance automation, fintech risk, company risk, business onboarding, Open-source fintech tools, financial compliance automation, KYB platform, AI-assisted KYB, open-source compliance project, business onboarding workflow, merchant risk scoring
+
+---
+
+## Final note
+
+verifyKYB is a practical, real-world open-source project for anyone building around KYB, fintech compliance, merchant onboarding, company verification, and business due diligence workflows.
+
+The goal is not just to build a demo. The goal is to create a useful, extensible, searchable, and production-minded KYB foundation that can evolve into a serious compliance and risk automation platform.
+
+If you want this project to be discovered by people looking for KYB, fintech compliance, merchant onboarding, and AI-powered business verification, this README structure and keyword strategy matter just as much as the code itself.
