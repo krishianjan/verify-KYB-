@@ -14,12 +14,12 @@ const FEATURES = [
     body: "Tiered crawling, WHOIS/RDAP domain age, DNS/MX, TLS, reputation, and deterministic ghost-business signals with a legitimacy score.",
   },
   {
-    k: "F4",
+    k: "F3",
     title: "Web intelligence",
     body: "An agent scrapes the open web for location, team, funding and news; an LLM structures the evidence and judges presence — as a signal, not a verdict.",
   },
   {
-    k: "F3",
+    k: "F4",
     title: "Risk & workflow",
     body: "A bank-style weighted scorecard with hard-stops and reason codes, a review queue, analyst actions, and an immutable audit trail.",
   },
