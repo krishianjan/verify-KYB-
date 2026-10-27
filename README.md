@@ -1,12 +1,15 @@
 # Verify KYB
 
+Open-source KYB (Know Your Business) verification platform for fintech, merchant onboarding, compliance, AML, business due diligence, and company risk assessment.
 
 <img width="1376" height="768" alt="KYB_project_Image" src="https://github.com/user-attachments/assets/06f1c082-0c5a-4705-aeef-361384eeb57f" />
 
 
 
 
-Open-source KYB (Know Your Business) verification platform for fintech, merchant onboarding, compliance, AML, business due diligence, and company risk assessment.
+
+
+
 
 verifyKYB is a real-world KYB project for identifying and verifying businesses, merchants, and companies before onboarding them into financial products, payment systems, banking workflows, and risk review pipelines. It combines company verification, digital footprint analysis, risk scoring, and AI-assisted review to help teams automate KYB checks with explainable decision-making.
 
