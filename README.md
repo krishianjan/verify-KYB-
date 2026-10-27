@@ -58,11 +58,6 @@ Common KYB use cases include:
 - company risk scoring
 
 ---
-
-## Search-friendly repo positioning
-
-This project is positioned around common search terms and user intent such as:
-
 - KYB
 - Know Your Business
 - KYB verification
@@ -91,19 +86,6 @@ This project is positioned around common search terms and user intent such as:
 - company screening
 - merchant risk
 - business verification software
-
-This repository is designed to be discoverable by people searching for:
-- best KYB projects
-- open-source KYB projects
-- KYB agents
-- KYB tools for fintech
-- fintech compliance open source
-- company verification software
-- merchant onboarding projects
-- AI KYB automation
-- KYB dashboard
-- KYB verification platform
-
 ---
 
 ## Project goals
