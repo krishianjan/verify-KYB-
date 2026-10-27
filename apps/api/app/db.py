@@ -2,19 +2,23 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, event
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 from .config import settings
+
+_IS_SQLITE = settings.database_url.startswith("sqlite")
 
 
 class Base(DeclarativeBase):
     pass
 
 
+# For SQLite, allow cross-thread use (FastAPI runs sync endpoints in a thread
+# pool) and wait up to 30s on a write lock instead of failing immediately.
 _connect_args = (
-    {"check_same_thread": False}
-    if settings.database_url.startswith("sqlite")
+    {"check_same_thread": False, "timeout": 30}
+    if _IS_SQLITE
     else {}
 )
 
@@ -23,6 +27,20 @@ engine = create_engine(
     connect_args=_connect_args,
     future=True,
 )
+
+
+if _IS_SQLITE:
+    @event.listens_for(engine, "connect")
+    def _sqlite_concurrency_pragmas(dbapi_conn, _record):  # noqa: ANN001
+        # WAL lets readers run alongside a writer; busy_timeout makes concurrent
+        # writers wait rather than raising "database is locked". synchronous=
+        # NORMAL is the safe, fast default under WAL.
+        cur = dbapi_conn.cursor()
+        cur.execute("PRAGMA journal_mode=WAL")
+        cur.execute("PRAGMA synchronous=NORMAL")
+        cur.execute("PRAGMA busy_timeout=30000")
+        cur.close()
+
 
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
 
