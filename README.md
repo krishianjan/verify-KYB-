@@ -1,4 +1,4 @@
-# verifyKYB
+# verify KYB with Agents
 
 Open-source KYB (Know Your Business) platform. **Feature 1: Business registry +
 corporate identity verification.**
