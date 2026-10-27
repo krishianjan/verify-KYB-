@@ -1,4 +1,4 @@
-# verifyKYB — Project Notes (full history & reference)
+# verifyKYB  Project Notes (full history & reference)
 
 _Last updated: 2026-10-26. Backend complete (Features 1–4 + ML + report) with a
 Streamlit demo. Feature 4 (web-intelligence agent) + registry-resilience fix
@@ -15,7 +15,7 @@ vendors. There's no simple open-source starter for the whole workflow.
 
 **Goal.** One open-source KYB (Know Your Business) workflow that, from a single
 submission, **verifies a company's legal existence, analyzes its digital
-footprint, scores risk explainably, and routes unresolved cases to analysts** —
+footprint, scores risk explainably, and routes unresolved cases to analysts** 
 with a clear verdict out, not a spreadsheet.
 
 **Reference product.** Modeled on **Baselayer** (US KYB vendor): one API call in →
