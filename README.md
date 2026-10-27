@@ -63,37 +63,6 @@ Common KYB use cases include:
 - business identity validation
 - company risk scoring
 
----
-- KYB
-- Know Your Business
-- KYB verification
-- KYB project
-- open-source KYB
-- KYB platform
-- KYB automation
-- fintech compliance
-- merchant onboarding
-- company verification
-- business due diligence
-- AML workflow
-- KYC and KYB
-- business risk assessment
-- startup KYB platform
-- open-source compliance tools
-- compliance automation
-- merchant verification
-- risk scoring software
-- AI KYB agents
-- AI compliance agents
-- KYB agent workflow
-- business onboarding automation
-- financial compliance tools
-- fintech onboarding
-- company screening
-- merchant risk
-- business verification software
----
-
 ## Project goals
 
 verifyKYB aims to provide a practical open-source workflow for:
