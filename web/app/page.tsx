@@ -19,7 +19,7 @@ export default function Home() {
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
             Every decision is deterministic, rule-based, and traceable to reason
-            codes — the posture regulators expect (SR 11-7 model risk, FCRA/ECOA
+            codes  the posture regulators expect (SR 11-7 model risk, FCRA/ECOA
             adverse action, EU AI Act). Machine learning and LLMs add signals and
             explanations; they never make the call.
           </p>
