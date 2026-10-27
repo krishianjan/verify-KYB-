@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { LenisProvider } from "@/components/lenis-provider";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { themeScript } from "@/components/theme-toggle";
@@ -27,13 +26,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-full flex flex-col">
-        <LenisProvider>
-          <Suspense fallback={<div className="h-16 border-b border-border" />}>
-            <SiteNav />
-          </Suspense>
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
-        </LenisProvider>
+        <Suspense fallback={<div className="h-16 border-b border-border" />}>
+          <SiteNav />
+        </Suspense>
+        <main className="flex-1">{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );

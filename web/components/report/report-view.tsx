@@ -104,7 +104,13 @@ export function ReportView({ report }: { report: ReportOut }) {
         <dl className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
           <Row k="Legal name" v={report.business.name} />
           <Row k="Structure" v={report.business.structure} />
-          <Row k="Registry status" v={report.business.status} />
+          <Row
+            k="Registry status"
+            v={
+              report.business.status ||
+              (report.business.structure ? "not published by registry" : null)
+            }
+          />
           <Row
             k="In business"
             v={
@@ -323,7 +329,7 @@ function Row({ k, v }: { k: string; v: string | null | undefined }) {
   return (
     <div className="flex flex-col">
       <dt className="text-xs text-muted-foreground">{k}</dt>
-      <dd className={cn("text-sm", !v && "text-grey-400")}>{v || "not found"}</dd>
+      <dd className={cn("text-sm", !v && "text-grey-400")}>{v || "—"}</dd>
     </div>
   );
 }
