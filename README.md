@@ -1,4 +1,4 @@
-# verifyKYB
+# Verify KYB
 
 Open-source KYB (Know Your Business) verification platform for fintech, merchant onboarding, compliance, AML, business due diligence, and company risk assessment.
 
