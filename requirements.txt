@@ -1,0 +1,34 @@
+fastapi>=0.110
+uvicorn[standard]>=0.27
+sqlalchemy>=2.0
+pydantic>=2.6
+pydantic-settings>=2.1
+httpx>=0.27
+
+# Matching / fuzzy similarity
+rapidfuzz>=3.0
+
+# Feature 2: digital footprint (crawl + domain intel)
+beautifulsoup4>=4.12
+python-whois>=0.9
+dnspython>=2.6
+playwright>=1.44  # JS-heavy sites — after install run: playwright install chromium
+
+# Feature 3: vector store / memory (embedded, free, local embeddings)
+chromadb>=1.5
+# Feature 3: ML risk layer (anomaly detection + supervised scaffold)
+scikit-learn>=1.3
+numpy>=1.24
+
+# US Secretary of State registry (Apify actor)
+apify-client>=3.3
+
+# Feature 4: web-intelligence agent (open-source scraper -> LLM-ready markdown).
+# Optional/lazy-imported; after install run: crawl4ai-setup (installs a browser).
+crawl4ai>=0.4
+
+# Postgres (optional; SQLite works out of the box)
+psycopg[binary]>=3.1
+
+# Dev / test
+pytest>=8.0
