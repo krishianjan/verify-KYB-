@@ -1,7 +1,4 @@
-# Verify KYB
-
-Open-source KYB (Know Your Business) verification platform for fintech, merchant onboarding, compliance, AML, business due diligence, and company risk assessment.
-
+# VerifyKYB
 
 
 <img width="1376" height="768" alt="KYB_project_Image" src="https://github.com/user-attachments/assets/06f1c082-0c5a-4705-aeef-361384eeb57f" />
@@ -11,313 +8,279 @@ Open-source KYB (Know Your Business) verification platform for fintech, merchant
 
 
 
+**Open-source KYB (Know Your Business) verification platform.** One submission in →
+one clear, explainable answer out: *is this business real, how confident are we,
+and what should happen next* — approve, review, or reject — with the evidence and
+reasons attached. When official records can't confirm a business, a **digital
+agent** gathers web evidence so the case never stalls.
 
-
-
-
-
-verifyKYB is a real-world KYB project for identifying and verifying businesses, merchants, and companies before onboarding them into financial products, payment systems, banking workflows, and risk review pipelines. It combines company verification, digital footprint analysis, risk scoring, and AI-assisted review to help teams automate KYB checks with explainable decision-making.
-
-This repository is designed for developers, fintech teams, compliance professionals, risk analysts, and builders who want an open-source foundation for KYB software, merchant onboarding workflows, business verification systems, and AI-powered compliance automation.
-
-
-Try it out here : https://verify-kyb-gules.vercel.app/
----
-
-## Why this project matters
-
-KYB (Know Your Business) is one of the most important compliance workflows in fintech, payments, banking, and merchant onboarding. Companies need to verify that the businesses they onboard are legitimate, operational, and low risk.
-
-Traditional KYB processes are often:
-- manual
-- inconsistent
-- slow
-- fragmented across tools
-- difficult to scale
-- hard to explain to auditors and analysts
-
-verifyKYB solves this by combining:
-- registry-based verification
-- digital footprint checks
-- reputation and domain intelligence
-- risk scoring
-- report generation
-- analyst review workflows
-- AI-assisted explainability
-
-This makes it useful for:
-- fintech startups
-- payment platforms
-- banking partners
-- merchant onboarding teams
-- compliance operations
-- AML and KYC workflows
-- vendor due diligence
-- business verification tools
-- risk screening systems
+**Live demo:** https://verify-kyb-gules.vercel.app/
+> Hosted on a free tier that sleeps when idle — the **first request can take ~50s**
+> to wake the server, then it's fast. If a web section looks empty, the instance
+> was asleep; reload once.
 
 ---
 
-## What is KYB?
+## Run it locally (2 minutes, no API keys)
 
-KYB stands for Know Your Business. It is the process of verifying the identity, legitimacy, ownership, and risk of a business before accepting it as a customer, merchant, vendor, or partner.
-
-Common KYB use cases include:
-- merchant onboarding
-- fintech business verification
-- payment partner screening
-- supplier due diligence
-- vendor risk assessment
-- AML and sanctions screening support
-- compliance review
-- business identity validation
-- company risk scoring
-
-## Project goals
-
-verifyKYB aims to provide a practical open-source workflow for:
-
-1. verifying company identity
-2. checking legal existence and registration
-3. gathering company and merchant data
-4. crawling and evaluating digital footprint
-5. scoring risk and compliance signals
-6. generating explainable KYB reports
-7. routing uncertain cases for analyst review
-8. creating reusable foundations for AI-driven compliance systems
-
----
-
-## Core features
-
-### 1. Company and merchant verification
-- identify business entities
-- verify legal registration
-- resolve company names and addresses
-- assess match quality
-- detect mismatches and inconsistencies
-
-### 2. Registry-based checks
-- official business registry lookups
-- legal status verification
-- company metadata extraction
-- officers and directors review
-- beneficial ownership signals where available
-
-### 3. Digital footprint analysis
-- domain and website verification
-- WHOIS / RDAP checks
-- DNS and TLS insights
-- social presence detection
-- website legitimacy analysis
-- ghost business signal detection
-- business profile synthesis
-
-### 4. Risk scoring
-- weighted risk model
-- explainable reason codes
-- review triggers
-- deterministic scoring
-- risk grade generation
-- confidence-based decisions
-
-### 5. Analyst workflow
-- review queue
-- escalation paths
-- manual decision support
-- audit trail
-- approval / reject / request documents workflows
-
-### 6. AI-powered explanation layer
-- structured explanations for human readers
-- narrative summaries
-- AI-generated reasoning
-- evidence-backed explainability
-- assistive analysis for analysts
-
-### 7. Report generation
-- KYB report output
-- business summary
-- transparency on sources
-- risk findings
-- match quality and evidence summary
-
-### 8. AI agent architecture
-This project is designed to be expanded into agentic workflows for:
-- background data collection
-- company enrichment
-- web intelligence gathering
-- structured evidence extraction
-- explanation and summarization
-- automated next-step recommendations
-
----
-
-## Why this repo is useful for AI and automation
-
-This project is intended to support:
-- AI agents for compliance workflows
-- rule-based verification pipelines
-- autonomous research agents
-- structured evidence extraction
-- AI-assisted risk reviews
-- LLM explanations with deterministic decision control
-
-Important design principle:
-- AI explains and supports the review
-- the final decision remains auditable and rule-based
-- the workflow is not dependent on opaque black-box decisions
-
-This is important for real-world compliance and finance environments where traceability matters.
-
----
-
-## Typical architecture
-
-The system is structured around a pipeline:
-
-1. Receive business submission
-2. Validate submitted company or merchant information
-3. Run registry and identity checks
-4. Gather digital footprint data
-5. Review domain, web presence, and business signals
-6. Compute risk using deterministic scoring
-7. Generate explainable result and report
-8. Route uncertain cases to analyst review
-
-```text
-Submission
-   ↓
-Identity verification
-   ↓
-Digital footprint analysis
-   ↓
-Risk scoring engine
-   ↓
-Report generation
-   ↓
-Manual review / approval / reject
-```
-
----
-
-## Tech stack
-
-| Layer | Technology |
-|------|------------|
-| API | FastAPI |
-| Validation | Pydantic |
-| Database | SQLAlchemy + SQLite / Postgres |
-| Matching | rapidfuzz |
-| Web scraping | httpx, BeautifulSoup, Playwright |
-| Domain intelligence | python-whois, RDAP, dnspython |
-| Reputation checks | urlscan.io |
-| AI / LLM support | OpenRouter |
-| Vector memory | ChromaDB |
-| Machine learning | scikit-learn |
-| Dashboard | Streamlit |
-| Async / background tasks | extendable for future rollout |
-
----
-
-## Main project goals
-
-verifyKYB is meant to be:
-- open source
-- practical
-- production-minded
-- explainable
-- modular
-- extendable
-- relevant to real fintech and compliance workflows
-- useful for learning and building real business verification systems
-
----
-
-## Example KYB workflow
-
-A typical verification flow looks like this:
-
-1. Business submits company or merchant details
-2. System checks the legal existence of the business
-3. Data is matched against registry information
-4. Company name, address, and ownership are compared
-5. Domain and website are reviewed
-6. Reputation and footprint signals are computed
-7. Risk score is generated
-8. A KYB report is produced
-9. If there are uncertain signals, the case is routed for analyst review
-
----
-
-## Repository vision
-
-This repository is intended as a strong open-source foundation for:
-
-- KYB verification platforms
-- merchant onboarding software
-- business identity systems
-- financial compliance tooling
-- AI-assisted due diligence
-- fintech startup projects
-- risk scoring dashboards
-- startup compliance automation
-- real-world KYB agent workflows
-
----
-
-## Why this repo can stand out
-
-This project is valuable because it sits at the intersection of:
-- fintech
-- compliance
-- automation
-- AI
-- merchant onboarding
-- corporate verification
-- risk scoring
-- open-source engineering
-
-That makes it attractive for:
-- open-source contributors
-- fintech builders
-- product teams
-- startups
-- compliance engineers
-- risk analysts
-- developers exploring business verification systems
-
----
-
-## Quick start
+The system runs **fully offline by default** (`REGISTRY_PROVIDER=mock`) — no keys,
+no external calls.
 
 ```bash
 git clone https://github.com/krishianjan/verify-KYB-.git
 cd verify-KYB-
-```
-
-Then install dependencies and run the application according to the local environment configuration.
-
-```bash
 pip install -r requirements.txt
-```
 
-Run the API:
-
-```bash
 cd apps/api
 uvicorn app.main:app --reload
+# API + Swagger docs: http://127.0.0.1:8000/docs
 ```
 
-Visit:
-- Swagger docs: http://127.0.0.1:8000/docs
-
-Run the dashboard:
-
+Optional analyst dashboard (separate terminal, backend must be running):
 ```bash
 cd dashboard
-streamlit run streamlit_app.py
+pip install -r requirements.txt
+streamlit run streamlit_app.py            # http://localhost:8501
 ```
+
+Run the test suite:
+```bash
+cd apps/api
+python -m pytest tests/ -q                # 31 passing
+```
+
+---
+
+## Sample inputs → expected outputs
+
+With the default mock registry (offline), these are deterministic:
+
+```bash
+# 1) Clean match -> auto_approve
+curl -s -X POST http://127.0.0.1:8000/kyb/cases \
+  -H 'content-type: application/json' \
+  -d '{"legal_name":"ACME TRADING LTD","company_number":"01234567"}'
+#    -> decision: auto_approve, KYB grade A, high confidence
+
+# 2) Dissolved / ghost company -> reject
+curl -s -X POST http://127.0.0.1:8000/kyb/cases \
+  -H 'content-type: application/json' \
+  -d '{"legal_name":"GHOST HOLDINGS LTD","company_number":"09999999"}'
+#    -> decision: reject, reason codes attached
+
+# 3) No state / records can't confirm -> digital agent runs
+curl -s -X POST http://127.0.0.1:8000/kyb/cases \
+  -H 'content-type: application/json' \
+  -d '{"legal_name":"amazon"}'
+#    -> KYB: PENDING, decision: provisional_review, web-presence score from the agent
+
+# Read the full customer-facing report for any case id returned above:
+curl -s http://127.0.0.1:8000/kyb/cases/<id>/report | python -m json.tool
+```
+
+To use real US data instead of mock, set `REGISTRY_PROVIDER=us_sos` and
+`APIFY_API_TOKEN=...` in `.env`, then submit with a state:
+`{"legal_name":"38 TESLA, LLC","state":"CA"}` → auto_approve.
+
+---
+
+## The problem
+
+Banks, fintechs, and payment providers must verify that a business is real before
+onboarding it — but they often start with just a name and a website. If that can't
+be verified properly, a fake or shell business gets approved, leading to fraud,
+chargebacks, and compliance penalties. Doing the check by hand is slow and
+inconsistent, and the evidence is scattered across many separate tools.
+
+The hardest moment is when **official records can't confirm a business** — no
+state was given, the company is new or foreign, or the data provider is down. Most
+systems either dead-end at "not found" or (worse) treat "we couldn't check" as
+"this is bad" and falsely reject a real business.
+
+## The solution
+
+verifyKYB turns one business submission into one structured, explainable decision:
+
+- **Software makes every decision** — the records match, the risk score, the rules.
+  This keeps the outcome consistent, reproducible, and auditable.
+- **AI only reads and explains** — it turns messy web pages into a clean summary
+  and scores online presence within strict bounds. It **never approves or rejects**.
+- **A person handles the rest** — anything the rules can't settle goes to an
+  analyst, with the evidence in front of them.
+
+When records can't confirm a business, the **digital agent** searches the open web,
+reads the top pages, and returns a short sourced profile (location, HQ, industry,
+recent news, socials) plus a bounded web-presence score — so the case keeps moving
+instead of stalling or falsely rejecting.
+
+---
+
+## How the decision works (request → decision pipeline)
+
+```text
+POST /kyb/cases
+   │
+   ├─ 1. Identity verification
+   │     • resolve the business in an official registry
+   │     • fuzzy name/address match (rapidfuzz); grade EXACT/SIMILAR/PARTIAL/NONE
+   │     • persist records, officers, owners, mismatches → identity confidence
+   │
+   ├─ 2. Risk engine (deterministic)
+   │     • weighted scorecard: Identity 45% / Footprint 35% / Ownership 20%
+   │     • hard stops (inactive, not-found-but-checked, number mismatch, parked site)
+   │     • review triggers (registry unavailable, no state, cloned site)
+   │     • optional ML anomaly signal (never a hard stop)
+   │
+   ├─ 3. Digital footprint / web-intelligence agent  (POST …/footprint, …/enrich)
+   │     • crawl website + domain intel (WHOIS/RDAP, DNS/MX, TLS), reputation, socials
+   │     • agent: web search → read pages → LLM extracts structured profile
+   │     • LLM-as-judge web-presence score, bounded (±15) — never decides
+   │
+   └─ Explainable report → Approve / Review / Reject → analyst queue + audit trail
+```
+
+### Scoring
+- **Two grades, A–F:** **KYB** = records-match quality (`identity_confidence × 100`);
+  **Risk** = `100 − overall_risk`.
+- **Bands:** A: 90–100 · B: 80–89 · C: 70–79 · D: 60–69 · F: below 60.
+- **PENDING** (not F) when records can't confirm — a *state*, not a failing grade.
+- **Match categories:** EXACT ≥ 0.97 · SIMILAR ≥ 0.80 · PARTIAL ≥ 0.50 · NONE below 0.50.
+- **Decision:** hard stop → reject · review trigger → manual/provisional review ·
+  KYB ≥ B and Risk ≥ B → auto_approve · otherwise review.
+
+---
+
+## Key design decisions & trade-offs
+
+**1. Deterministic rules decide; AI only explains.**
+Regulated onboarding decisions must be reproducible and defensible (SR 11-7 model
+risk, FCRA/ECOA adverse action, EU AI Act). An LLM's answer changes between runs,
+can invent facts, and can't cite a record — so "the model said so" is not a
+defensible decline. *Trade-off:* more engineering than a single LLM call, but the
+output is auditable. AI is fenced to extraction, summaries, and a bounded
+web-presence judge.
+
+**2. Three-state verification: good / bad / not-checked.**
+The core resilience decision. A failed or missing registry lookup sets
+confidence to *null* (not 0) and emits a **review trigger, never a hard stop**;
+the identity/ownership categories are skipped when there's no data. *Why:* a
+registry outage or coverage gap must never become an adverse action against a real
+business. (This fixed a real bug: a live lookup once returned a reject only because
+the data provider had hit its monthly quota.)
+
+**3. Build fresh, treat existing KYB repos as reference, not dependencies.**
+Studied commercial products and open-source projects, found no complete,
+explainable open-source workflow, and built a clean spine instead of forking.
+*Trade-off:* more upfront work, but no inherited constraints and full control of
+the decision logic.
+
+**4. Frozen adapter interfaces for every external source.**
+Registries, crawlers, searchers, and summarizers sit behind fixed contracts
+(`registry/base.py`, `webintel/crawler/base.py`, etc.). Adding a jurisdiction or
+data source never touches the risk engine. *Trade-off:* a little abstraction now
+for easy extension later.
+
+**5. Cheap-first, tiered data gathering.**
+Crawler tier: static (httpx + BeautifulSoup) → Crawl4AI → Playwright → Apify.
+Search chain: Firecrawl → Crawl4AI → DuckDuckGo (always the free fallback).
+Domain intel (WHOIS/RDAP/DNS/TLS) is free/local. *Why:* minimize cost and latency;
+only escalate to paid/heavy tooling when needed.
+
+**6. US-first registry; UK spec'd, not built.**
+US via the Apify Secretary-of-State actor (all 50 states + DC). *Trade-off /
+limitation:* Delaware and foreign entities are gaps SoS data can't cover, and the
+**US publishes no beneficial-owner data** (FinCEN BOI isn't public) — officers are
+used as a proxy and a non-penalizing `NO_VERIFIED_UBO` signal is set.
+
+**7. LLM output is fenced and sanitized.**
+The model returns content only (never chain-of-thought), a `clean_summary()`
+sanitizer strips any leaked reasoning, and the judge can move a score by at most
+±15. *Why:* prevents prompt/CoT leakage and stops the AI from ever driving the
+verdict. (Pin `OPENROUTER_MODEL` to an instruct model like `openai/gpt-4o-mini`;
+the rotating `openrouter/free` alias can route to reasoning models that return
+empty content.)
+
+**8. Synchronous v1.**
+A live lookup runs inline (~40–120s with external calls). *Trade-off:* simpler to
+reason about and test; background processing + polling is the planned next step to
+remove the wait.
+
+**9. SQLite for dev, Postgres for prod.**
+Dev uses SQLite with additive auto-migration (new columns added on startup, no
+manual migration during iteration). Production targets Postgres via `DATABASE_URL`
+with Alembic. *Note:* on a free hosting tier, SQLite lives on an ephemeral disk, so
+cases don't survive a restart — attach Postgres for a persistent demo.
+
+**Alternatives considered and rejected:** a single LLM making the decision
+(not auditable); SEC EDGAR for ownership (covers only public companies, not the
+small-business target); mem0 for memory (stateless deterministic pipelines +
+Postgres already suffice); Qdrant/Weaviate over Chroma (embedded Chroma is enough
+for cloned-site detection + case memory at this scale).
+
+---
+
+## Features
+
+- **Company & merchant verification** — entity resolution, legal-status checks,
+  fuzzy name/address matching, mismatch detection.
+- **Registry checks** — official lookups, metadata, officers/directors, ownership
+  signals where published.
+- **Digital footprint** — website/domain verification, WHOIS/RDAP, DNS/TLS, social
+  presence, ghost-business signals, legitimacy score.
+- **Web-intelligence agent** — web search → scrape → LLM structured extraction →
+  bounded web-presence judge → narrative, with sources.
+- **Risk scoring** — weighted deterministic scorecard, reason codes, hard stops,
+  review triggers.
+- **Analyst workflow** — review queue, approve/reject/request-docs/escalate,
+  audit trail.
+- **Explainable reports** — two A–F grades, match quality, decision + reasoning,
+  source-of-truth map.
+- **ML signal** — IsolationForest anomaly detection (complements, never replaces
+  the rules) + supervised scaffold from analyst labels.
+
+---
+
+## API endpoints
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| GET  | `/health` | status + active registry provider |
+| POST | `/kyb/cases` | create + verify (identity + risk) |
+| GET  | `/kyb/cases/{id}` | full raw case |
+| GET  | `/kyb/cases/{id}/report` | customer-facing report (two grades, decision) |
+| POST | `/kyb/cases/{id}/footprint` | run digital footprint |
+| GET  | `/kyb/cases/{id}/footprint` | latest footprint |
+| POST | `/kyb/cases/{id}/enrich` | run the web-intelligence agent |
+| GET  | `/kyb/cases` | analyst review queue (filters: status, rating, decision) |
+| POST | `/kyb/cases/{id}/actions` | analyst action |
+| POST | `/kyb/cases/{id}/risk` | recompute risk |
+| POST | `/kyb/cases/{id}/explain` | on-demand AI explanation |
+| GET  | `/kyb/cases/{id}/memory` | vector case memory |
+
+---
+
+## Configuration (`.env`)
+
+Everything runs offline on defaults; set these only to use live providers. Copy
+`.env.example` to `.env`. **Never commit `.env`** (it's gitignored).
+
+| Variable | Default | Notes |
+|----------|---------|-------|
+| `REGISTRY_PROVIDER` | `mock` | `mock` \| `us_sos` \| `companies_house` (spec) |
+| `CRAWLER_PROVIDER` | `tiered` | `mock` \| `static` \| `playwright` \| `apify` \| `tiered` |
+| `SUMMARIZER_PROVIDER` | `template` | `template` (no key) \| `openrouter` |
+| `SEARCH_PROVIDER` | `ddg` | priority list, e.g. `firecrawl,crawl4ai,ddg` |
+| `OPENROUTER_MODEL` | — | use `openai/gpt-4o-mini` (avoid `openrouter/free`) |
+| `OPENROUTER_API_KEY` | — | for LLM summaries/enrichment |
+| `APIFY_API_TOKEN` | — | US Secretary-of-State lookups |
+| `FIRECRAWL_API_KEY` | — | web search/scrape |
+| `URLSCAN_API_KEY` | — | reputation/screenshots |
+| `ENABLE_ENRICHMENT` | `true` | run the web-intelligence agent |
+| `ENABLE_VECTOR` | — | Chroma cloned-site detection (can OOM on 512MB hosts) |
+| `JUDGE_MAX_ADJUST` | `15` | ± cap on the web-presence judge |
+| `ENRICHMENT_MAX_QUERIES` / `_PAGES` | `6` / `5` | agent breadth |
+| `DATABASE_URL` | SQLite | set to Postgres for production/persistence |
+| `CORS_ORIGINS` | — | allowed frontend origins in production |
 
 ---
 
@@ -325,124 +288,81 @@ streamlit run streamlit_app.py
 
 ```text
 verifyKYB/
-├── apps/
-│   └── api/
-│       ├── app/
-│       ├── tests/
-│       └── scripts/
-├── dashboard/
-├── docs/
-├── README.md
+├── apps/api/                 FastAPI backend
+│   └── app/
+│       ├── main.py           app factory, CORS, lifespan
+│       ├── config.py         env-driven settings
+│       ├── db.py             engine/session + dev auto-migration
+│       ├── models.py         ORM tables
+│       ├── schemas.py        Pydantic request/response contracts
+│       ├── routes.py         HTTP API
+│       ├── pipelines.py      identity verification pipeline
+│       ├── report.py         customer-facing report builder
+│       ├── llm.py            shared OpenRouter helper (fenced + sanitized)
+│       ├── matching/         normalize.py + engine.py (fuzzy + confidence)
+│       ├── registry/         registry adapters (frozen interface)
+│       ├── webintel/         footprint + web-intelligence agent
+│       │   ├── search/       search providers (ddg/firecrawl/crawl4ai/apify + chain)
+│       │   ├── crawler/      tiered crawlers
+│       │   ├── enrich.py     the agent: structured extraction
+│       │   ├── judge.py      bounded LLM-as-judge web-presence score
+│       │   └── pipeline.py   footprint + enrichment orchestration
+│       └── risk/             engine.py + service.py + ml.py + explain.py
+├── dashboard/                Streamlit analyst console
+├── docs/                     API & implementation notes
 ├── requirements.txt
-├── FRONTEND_TASK.md
-├── OUTSOURCE_TASKS.md
-├── .env.example
-└── ...
+└── .env.example
 ```
 
 ---
 
-## Use cases
+## Database model
 
-### Fintech
-- verify merchants before onboarding
-- evaluate compliance risk before releasing accounts
-- review payment and business customers
-
-### Banking
-- support business onboarding workflows
-- reduce manual verification burden
-- assess operational legitimacy
-
-### Risk and compliance teams
-- monitor business risk
-- review suspicious onboarding cases
-- create explainable intervention workflows
-
-### Startups
-- build KYB features without starting from zero
-- prototype merchant onboarding systems
-- create a compliance workflow foundation
+The **business case** is the central entity, linked to registry records, officers,
+beneficial owners, identity assessments, field-level mismatches, web intelligence,
+risk signals, risk scores, analyst actions, and audit events. This separates
+**source evidence** from **assessment results**, **risk reasoning**, and **human
+decisions**, which keeps every case traceable and explainable. SQLAlchemy ORM;
+SQLite in dev (additive auto-migration), Postgres + Alembic for production.
 
 ---
 
-## AI and compliance alignment
+## Limitations (honest)
 
-This repository is designed to respect real-world compliance needs:
-
-- deterministic decisions where possible
-- explainable output
-- reason codes and evidence
-- analyst review for unresolved cases
-- AI assistance without replacing auditable decision logic
-
-This is essential for serious financial and compliance products.
-
----
+- US-only registry today; Delaware and foreign entities are coverage gaps.
+- US beneficial-ownership data isn't public (officers used as a proxy).
+- Synchronous lookups (~40–120s with live providers); no background processing yet.
+- Sanctions/watchlist and TIN/EIN matching are placeholders, not wired.
+- DuckDuckGo search is flaky from data-center IPs; page-link extraction is the
+  reliable social path.
+- Free hosting tier: cold starts (~50s) and an ephemeral database (cases reset on
+  restart) — use Postgres for a persistent deployment.
 
 ## Roadmap
 
-Planned improvements include:
-
-- stronger registry integration
-- more jurisdictions and country adapters
-- better entity matching
-- sanctions and watchlist checks
-- improved risk scoring
-- enhanced analyst review flow
-- AI-powered evidence summarization
-- real-time monitoring and periodic re-checks
-- production dashboard and frontend
-- API-first architecture for easier integration
+Entity-resolution clustering (rank clones vs. the real entity); sanctions/OFAC +
+TIN checks; OpenCorporates adapter for DE/foreign coverage; async background
+processing + polling; ongoing monitoring/re-checks; network-risk graph
+(shell-ring detection).
 
 ---
 
-## Contribution
+## How AI was used
 
-Contributions are welcome.
+AI coding assistants (Claude Code, Cursor, GitHub Copilot) were used for
+scaffolding, refactoring, and reviewing. The workflow, architecture, data model,
+risk weights, and hard-stop rules were designed and owned by the author; AI was
+directed to implement and refine supporting code against those requirements, and
+every change was reviewed and tested. The product itself uses an LLM **only to read
+and summarize web evidence and to produce a bounded web-presence score — it never
+approves or rejects a business.** The 31 passing tests validate *tested behavior*,
+not real-world fraud-detection accuracy or compliance outcomes.
 
-You can help by:
-- improving registry matching
-- enhancing risk scoring
-- improving data collection and scraping
-- improving report quality
-- adding better onboarding flows
-- building analytics and dashboards
-- adding tests
-- documenting architecture
-- expanding use cases
+## Contributing
 
----
+Contributions welcome — registry adapters (new jurisdictions), entity matching,
+risk scoring, scraping/enrichment quality, report clarity, tests, and docs.
 
-## FAQ
+## License
 
-### What is KYB?
-KYB stands for Know Your Business. It is the process of verifying the identity and legitimacy of a business before onboarding it.
-
-### Why is KYB important?
-KYB helps reduce fraud, financial crime, onboarding risk, and bad business relationships.
-
-### Is this project only for fintech?
-No. It is useful for any business that needs to assess the legitimacy and risk of a company, merchant, partner, or vendor.
-
-### Is this AI-powered?
-It can be enhanced with AI-assisted explanations, summaries, and evidence extraction, but the decision logic remains auditable and rule-based.
-
-### Is this open source?
-Yes. The repository is designed as an open-source KYB project and starter framework.
-
----
-
-## Keywords
-
-KYB, Know Your Business, KYB verification, open-source KYB, merchant onboarding, fintech compliance, AML, company verification, business verification, merchant verification, due diligence, risk scoring, risk assessment, AI KYB, KYB agents, compliance automation, fintech risk, company risk, business onboarding, Open-source fintech tools, financial compliance automation, KYB platform, AI-assisted KYB, open-source compliance project, business onboarding workflow, merchant risk scoring
-
----
-
-## Final note
-
-verifyKYB is a practical, real-world open-source project for anyone building around KYB, fintech compliance, merchant onboarding, company verification, and business due diligence workflows.
-
-The goal is not just to build a demo. The goal is to create a useful, extensible, searchable, and production-minded KYB foundation that can evolve into a serious compliance and risk automation platform.
-
-If you want this project to be discovered by people looking for KYB, fintech compliance, merchant onboarding, and AI-powered business verification, this README structure and keyword strategy matter just as much as the code itself.
+Open source. See `LICENSE` (add one if not present — MIT recommended for adoption).
