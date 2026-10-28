@@ -53,7 +53,7 @@ _LINK_HOSTS = {
     "instagram": "instagram.com", "facebook": "facebook.com", "youtube": "youtube.com",
 }
 
-
+#socilmedia links how handled 
 def socials_from_links(links: list[str]) -> dict[str, str]:
     """Extract social profile URLs already present on the crawled site."""
     out: dict[str, str] = {}
