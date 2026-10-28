@@ -23,6 +23,7 @@ def _host(url: str) -> str | None:
     return host
 
 
+
 def get_domain_info(url: str) -> DomainInfo:
     host = _host(url)
     if not host:
@@ -60,6 +61,7 @@ def _fill_dns(host: str, info: DomainInfo) -> None:
             pass
     except Exception as exc:  # noqa: BLE001
         info.error = f"dns: {exc}"
+
 
 
 def _check_tls(host: str) -> bool | None:
