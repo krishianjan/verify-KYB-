@@ -9,6 +9,7 @@ from ..dto import CrawlResult
 from .base import WebCrawler
 
 
+
 class MockCrawler(WebCrawler):
     source = "mock"
 
