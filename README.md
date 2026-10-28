@@ -363,6 +363,4 @@ not real-world fraud-detection accuracy or compliance outcomes.
 Contributions welcome — registry adapters (new jurisdictions), entity matching,
 risk scoring, scraping/enrichment quality, report clarity, tests, and docs.
 
-## License
 
-Open source. See `LICENSE` (add one if not present — MIT recommended for adoption).
