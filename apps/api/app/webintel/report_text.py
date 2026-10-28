@@ -15,7 +15,7 @@ from ..config import settings
 from ..llm import clean_summary, openrouter_chat
 
 _SYSTEM = (
-    "You are a KYB analyst writing the 'digital presence' section of a review. "
+    "You are a  Sr. KYB analyst writing the 'digital presence' section of a review. "
     "From the structured evidence and the web-presence judgment, write a concise "
     "briefing (4-6 sentences) covering what the company does, where it is based, "
     "its size/team, any funding or notable news, and how coherent its online "
