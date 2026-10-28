@@ -63,7 +63,7 @@ class EnrichmentData(BaseModel):
 _SYSTEM = (
     "You are a KYB research analyst. From the provided web excerpts about a "
     "company, extract a single factual profile. Use ONLY the given evidence. "
-    "If a field is not supported by the evidence, use null or an empty list — "
+    "If a field is not supported by the evidence, use null or an empty list  "
     "never guess. Do NOT estimate revenue or financial figures. For funding or "
     "news items, include the source URL they came from. Keep text concise. "
     "Return a JSON object with keys: description, industry, hq, locations[], "
@@ -103,6 +103,7 @@ def enrich_company(
     crawler: WebCrawler,
     seed_text: str | None = None,
 ) -> EnrichmentData:
+    
     # 1) Collect candidate URLs from targeted searches (+ the known website).
     urls: list[str] = []
     seen_hosts: set[str] = set()
