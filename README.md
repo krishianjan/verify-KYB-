@@ -21,11 +21,12 @@ agent** gathers web evidence so the case never stalls.
 
 ---
 
-## Run it locally (2 minutes, no API keys)
+## ## Run it locally (2 minutes, no API keys)
 
 The system runs **fully offline by default** (`REGISTRY_PROVIDER=mock`) — no keys,
 no external calls.
 
+**1. Backend (FastAPI)**
 ```bash
 git clone https://github.com/krishianjan/verify-KYB-.git
 cd verify-KYB-
@@ -36,14 +37,21 @@ uvicorn app.main:app --reload
 # API + Swagger docs: http://127.0.0.1:8000/docs
 ```
 
-Optional analyst dashboard (separate terminal, backend must be running):
+**2. Frontend (Next.js) — separate terminal, backend must be running**
+```bash
+cd web
+npm install
+npm run dev                               # http://localhost:3000
+```
+
+**Optional: Streamlit analyst console — separate terminal, backend must be running**
 ```bash
 cd dashboard
 pip install -r requirements.txt
 streamlit run streamlit_app.py            # http://localhost:8501
 ```
 
-Run the test suite:
+**Tests:**
 ```bash
 cd apps/api
 python -m pytest tests/ -q                # 31 passing
